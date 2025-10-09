@@ -2,7 +2,7 @@ import './App.css';
 
 function App() {
   return (
-    <>
+    <main>
       <h1>Input type date mit React:</h1>
 
       <h2>Variante 1: label + input</h2>
@@ -20,7 +20,7 @@ function App() {
           <input type="date" />
         </label>
       </form>
-    </>
+    </main>
   );
 }
 
