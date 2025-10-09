@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Iframe: Bitte ein Datum eingeben</title>
+</head>
+<body>
+  <form>
+    <label for="dateInput">Bitte ein Datum eingeben:</label>
+    <input id="dateInput" type="date" />
+  </form>
+
+  <script>
+    const input = document.getElementById('dateInput');
+    input.addEventListener('change', () => {
+      window.parent.postMessage({ type: 'datechange', value: input.value }, '*');
+    });
+    window.addEventListener('message', (e) => {
+      if (e.data.type === 'setValue') {
+        input.value = e.data.value;
+      }
+    });
+  </script>
+</body>
+</html>

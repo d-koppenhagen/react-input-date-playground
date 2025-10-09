@@ -1,6 +1,48 @@
 import './App.css';
+import './DateFormComponent';
+import { useEffect, useRef, useState } from 'react';
 
 function App() {
+  const [webComponentValue, setWebComponentValue] = useState('2024-01-15');
+  const [iframeValue, setIframeValue] = useState('2024-02-14');
+  const webComponentRef = useRef<HTMLElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleDateChange = (e: CustomEvent) => {
+    console.log('Date changed:', e.detail.value);
+  };
+
+  useEffect(() => {
+    const element = webComponentRef.current;
+    if (!element) return;
+
+
+
+    element.addEventListener('datechange', handleDateChange as EventListener);
+
+    return () => {
+      element.removeEventListener('datechange', handleDateChange as EventListener);
+    };
+  }, []);
+
+  useEffect(() => {
+    const handleMessage = (e: MessageEvent) => {
+      if (e.data.type === 'datechange') {
+        console.log('Iframe date changed:', e.data.value);
+      } else if (e.data.type === 'datesubmit') {
+        console.log('Iframe form submitted:', e.data.value);
+      }
+    };
+
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, []);
+
+  const setIframeDate = (value: string) => {
+    setIframeValue(value);
+    iframeRef.current?.contentWindow?.postMessage({ type: 'setValue', value }, '*');
+  };
+
   return (
     <main>
       <h1>Input type date mit React:</h1>
@@ -16,10 +58,34 @@ function App() {
 
       <form>
         <label>
-          Bitte ein Datum eingeben
+          Bitte ein Datum eingeben:
           <input type="date" />
         </label>
       </form>
+
+      <h2>Variante 3: Web Component</h2>
+
+      <div>
+        <button type='button' onClick={() => setWebComponentValue('2024-12-31')}>
+          Datum auf Silvester setzen
+        </button>
+        <date-form-component
+          ref={webComponentRef}
+          value={webComponentValue}/>
+      </div>
+
+      <h2>Variante 4: Iframe</h2>
+
+      <div>
+        <button type='button' onClick={() => setIframeDate('2024-12-31')}>
+          Datum auf Silvester setzen
+        </button>
+        <iframe
+          title='date iframe'
+          ref={iframeRef}
+          src="/react-input-date-playground/iframe-form.html"
+        />
+      </div>
     </main>
   );
 }
