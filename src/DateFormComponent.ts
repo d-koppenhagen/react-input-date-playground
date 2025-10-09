@@ -25,7 +25,7 @@ class DateFormComponent extends HTMLElement {
     return ['value'];
   }
 
-  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+  attributeChangedCallback(name: string, _oldValue: string, newValue: string) {
     if (name === 'value' && this.input) {
       this.input.value = newValue || '';
     }

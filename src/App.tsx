@@ -2,9 +2,11 @@ import './App.css';
 import './DateFormComponent';
 import { useEffect, useRef, useState } from 'react';
 
+
 function App() {
   const [webComponentValue, setWebComponentValue] = useState('2024-01-15');
-  const [iframeValue, setIframeValue] = useState('2024-02-14');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_iframeValue, setIframeValue] = useState('2024-02-14');
   const webComponentRef = useRef<HTMLElement>(null);
   const iframeRef = useRef<HTMLIFrameElement>(null);
 
@@ -69,9 +71,11 @@ function App() {
         <button type='button' onClick={() => setWebComponentValue('2024-12-31')}>
           Datum auf Silvester setzen
         </button>
+        {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+        {/* @ts-expect-error */}
         <date-form-component
           ref={webComponentRef}
-          value={webComponentValue}/>
+          value={webComponentValue} />
       </div>
 
       <h2>Variante 4: Iframe</h2>
