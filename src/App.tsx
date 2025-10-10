@@ -131,7 +131,7 @@ function App() {
         <div className='sr-only' id="date-format">Format: Tag Punkt Monat Punkt Jahr</div>
       </form>
 
-      <h2>Variante 7: react-aria-components</h2>
+      <h2>Variante 7: react-aria-components (iOS VoiceOver Workaround)</h2>
 
       <label aria-hidden htmlFor="my-date-input-3">Bitte ein Datum eingeben:</label>
       <input aria-hidden id="my-date-input-3" type="date" />
