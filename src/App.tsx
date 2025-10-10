@@ -1,7 +1,7 @@
 import './App.css';
 import './DateFormComponent';
 import { useEffect, useRef, useState } from 'react';
-
+import {DateField, Label, DateInput, DateSegment} from 'react-aria-components';
 
 function App() {
   const [webComponentValue, setWebComponentValue] = useState('2024-01-15');
@@ -90,6 +90,59 @@ function App() {
           src="/react-input-date-playground/iframe-form.html"
         />
       </div>
+
+      <h2>Variante 5: Drei separate Eingabefelder (iOS VoiceOver Workaround)</h2>
+
+      <form>
+        <label aria-hidden htmlFor="my-date-input-2">Bitte ein Datum eingeben:</label>
+        <input aria-hidden id="my-date-input-2" type="date" />
+        <fieldset>
+          <legend>Bitte ein Datum eingeben:</legend>
+          <label>
+            Tag
+            <input type="number" />
+          </label>
+          <label>
+            Monat
+            <input type="number" />
+          </label>
+          <label>
+            Jahr
+            <input type="number" />
+          </label>
+        </fieldset>
+      </form>
+
+      <h2>Variante 6: Text-Eingabe mit Format-Hinweis (iOS VoiceOver Workaround)</h2>
+
+      <form>
+        <label aria-hidden htmlFor="my-date-input-3">Bitte ein Datum eingeben:</label>
+        <input aria-hidden id="my-date-input-3" type="date" />
+        <label htmlFor="date-text">
+          Datum (TT.MM.JJJJ):
+          <input
+            id="date-text"
+            type="text"
+            placeholder="31.12.2024"
+            pattern='[0-9][0-9]\.[0-9][0-9]\.[0-9][0-9][0-9][0-9]'
+            aria-describedby="date-format"
+          />
+        </label>
+        <div className='sr-only' id="date-format">Format: Tag Punkt Monat Punkt Jahr</div>
+      </form>
+
+      <h2>Variante 7: react-aria-components</h2>
+
+      <label aria-hidden htmlFor="my-date-input-3">Bitte ein Datum eingeben:</label>
+      <input aria-hidden id="my-date-input-3" type="date" />
+      <form className='sr-only'>
+        <DateField>
+          <Label>Bitte ein Datum eingeben:</Label>
+          <DateInput>
+            {segment => <DateSegment segment={segment} />}
+          </DateInput>
+        </DateField>
+      </form>
     </main>
   );
 }
