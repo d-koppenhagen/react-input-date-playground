@@ -47,16 +47,16 @@ function App() {
 
   return (
     <main>
-      <h1>Input type date mit React:</h1>
+      <h1>Input type date with React:</h1>
 
-      <h2>Variante 1: label + input</h2>
+      <h2>Variant 1: label + input</h2>
 
       <form>
         <label htmlFor="my-date-input-1">Please enter a date:</label>
         <input id="my-date-input-1" type="date" />
       </form>
 
-      <h2>Variante 2: input als Kindelement von label:</h2>
+      <h2>Variant 2: input as a child element of label:</h2>
 
       <form>
         <label>
@@ -65,11 +65,11 @@ function App() {
         </label>
       </form>
 
-      <h2>Variante 3: Web Component</h2>
+      <h2>Variant 3: Web Component</h2>
 
       <div>
         <button type='button' onClick={() => setWebComponentValue('2024-12-31')}>
-          Datum auf Silvester setzen
+          Set date to New Year's Eve
         </button>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-expect-error */}
@@ -78,11 +78,11 @@ function App() {
           value={webComponentValue} />
       </div>
 
-      <h2>Variante 4: Iframe</h2>
+      <h2>Variant 4: iframe</h2>
 
       <div>
         <button type='button' onClick={() => setIframeDate('2024-12-31')}>
-          Datum auf Silvester setzen
+          Set date to New Year's Eve
         </button>
         <iframe
           title='date iframe'
@@ -91,7 +91,7 @@ function App() {
         />
       </div>
 
-      <h2>Variante 5: Drei separate Eingabefelder (iOS VoiceOver Workaround)</h2>
+      <h2>Variant 5: Three separate input fields (iOS VoiceOver Workaround)</h2>
 
       <form>
         <label aria-hidden htmlFor="my-date-input-2">Please enter a date:</label>
@@ -99,27 +99,27 @@ function App() {
         <fieldset>
           <legend>Please enter a date:</legend>
           <label>
-            Tag
+            Day
             <input type="number" />
           </label>
           <label>
-            Monat
+            Month
             <input type="number" />
           </label>
           <label>
-            Jahr
+            Year
             <input type="number" />
           </label>
         </fieldset>
       </form>
 
-      <h2>Variante 6: Text-Eingabe mit Format-Hinweis (iOS VoiceOver Workaround)</h2>
+      <h2>Variant 6: Text input with format information (iOS VoiceOver Workaround)</h2>
 
       <form>
         <label aria-hidden htmlFor="my-date-input-3">Please enter a date:</label>
         <input aria-hidden id="my-date-input-3" type="date" />
         <label htmlFor="date-text">
-          Datum (TT.MM.JJJJ):
+          Date (DD.MM.YY):
           <input
             id="date-text"
             type="text"
@@ -128,10 +128,10 @@ function App() {
             aria-describedby="date-format"
           />
         </label>
-        <div className='sr-only' id="date-format">Format: Tag Punkt Monat Punkt Jahr</div>
+        <div className='sr-only' id="date-format">Format: Day dot Month dot Year</div>
       </form>
 
-      <h2>Variante 7: react-aria-components (iOS VoiceOver Workaround)</h2>
+      <h2>Variant 7: react-aria-components (iOS VoiceOver Workaround)</h2>
 
       <label aria-hidden htmlFor="my-date-input-3">Please enter a date:</label>
       <input aria-hidden id="my-date-input-3" type="date" />
