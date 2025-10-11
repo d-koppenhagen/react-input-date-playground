@@ -52,7 +52,7 @@ function App() {
       <h2>Variante 1: label + input</h2>
 
       <form>
-        <label htmlFor="my-date-input-1">Bitte ein Datum eingeben:</label>
+        <label htmlFor="my-date-input-1">Please enter a date:</label>
         <input id="my-date-input-1" type="date" />
       </form>
 
@@ -60,7 +60,7 @@ function App() {
 
       <form>
         <label>
-          Bitte ein Datum eingeben:
+          Please enter a date:
           <input type="date" />
         </label>
       </form>
@@ -94,10 +94,10 @@ function App() {
       <h2>Variante 5: Drei separate Eingabefelder (iOS VoiceOver Workaround)</h2>
 
       <form>
-        <label aria-hidden htmlFor="my-date-input-2">Bitte ein Datum eingeben:</label>
+        <label aria-hidden htmlFor="my-date-input-2">Please enter a date:</label>
         <input aria-hidden id="my-date-input-2" type="date" />
         <fieldset>
-          <legend>Bitte ein Datum eingeben:</legend>
+          <legend>Please enter a date:</legend>
           <label>
             Tag
             <input type="number" />
@@ -116,7 +116,7 @@ function App() {
       <h2>Variante 6: Text-Eingabe mit Format-Hinweis (iOS VoiceOver Workaround)</h2>
 
       <form>
-        <label aria-hidden htmlFor="my-date-input-3">Bitte ein Datum eingeben:</label>
+        <label aria-hidden htmlFor="my-date-input-3">Please enter a date:</label>
         <input aria-hidden id="my-date-input-3" type="date" />
         <label htmlFor="date-text">
           Datum (TT.MM.JJJJ):
@@ -133,11 +133,11 @@ function App() {
 
       <h2>Variante 7: react-aria-components (iOS VoiceOver Workaround)</h2>
 
-      <label aria-hidden htmlFor="my-date-input-3">Bitte ein Datum eingeben:</label>
+      <label aria-hidden htmlFor="my-date-input-3">Please enter a date:</label>
       <input aria-hidden id="my-date-input-3" type="date" />
       <form className='sr-only'>
         <DateField>
-          <Label>Bitte ein Datum eingeben:</Label>
+          <Label>Please enter a date:</Label>
           <DateInput>
             {segment => <DateSegment segment={segment} />}
           </DateInput>
