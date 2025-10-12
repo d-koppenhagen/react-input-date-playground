@@ -1,7 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
+import { DateField, DateInput, DateSegment, Label } from 'react-aria-components';
+
 import './App.css';
 import './DateFormComponent';
-import { useEffect, useRef, useState } from 'react';
-import {DateField, Label, DateInput, DateSegment} from 'react-aria-components';
 
 function App() {
   const [webComponentValue, setWebComponentValue] = useState('2024-01-15');
@@ -142,6 +143,13 @@ function App() {
             {segment => <DateSegment segment={segment} />}
           </DateInput>
         </DateField>
+      </form>
+
+      <h2>Variante 8: role textinput</h2>
+
+      <form>
+        <label htmlFor="my-date-input-4">Bitte ein Datum eingeben:</label>
+        <input id="my-date-input-4" type="date" role='textbox' />
       </form>
     </main>
   );
