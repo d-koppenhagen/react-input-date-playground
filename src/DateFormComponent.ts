@@ -9,7 +9,7 @@ class DateFormComponent extends HTMLElement {
 
     this.form = document.createElement('form');
     const label = document.createElement('label');
-    label.textContent = 'Bitte ein Datum eingeben:';
+    label.textContent = 'Please enter a date:';
 
     this.input = document.createElement('input');
     this.input.type = 'date';
